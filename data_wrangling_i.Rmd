@@ -1,0 +1,36 @@
+---
+title: "Data Import"
+author: "Barik Rajpal"
+Date: "9/17/2019"
+output: github_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(tidyverse)
+```
+
+## Load in a Dataset
+
+
+```{r Loading Data, message = F}
+## Do something that reads in a dataset
+
+litters_data <- read_csv("./Data/FAS_litters.csv")
+litters_data <- janitor::clean_names(litters_data)
+
+pups_data <- read_csv("./Data/FAS_pups.csv")
+pups_data <- janitor::clean_names(pups_data)
+
+
+```
+
+## Including Plots
+
+You can also embed plots, for example:
+
+```{r pressure, echo=FALSE}
+plot(pressure)
+```
+
+
