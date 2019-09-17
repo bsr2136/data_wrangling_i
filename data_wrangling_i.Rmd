@@ -8,6 +8,7 @@ output: github_document
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = TRUE)
 library(tidyverse)
+library(readxl)
 ```
 
 ## Load in a Dataset
@@ -22,15 +23,41 @@ litters_data <- janitor::clean_names(litters_data)
 pups_data <- read_csv("./Data/FAS_pups.csv")
 pups_data <- janitor::clean_names(pups_data)
 
+```
+
+## Importing in other ways
+
+
+
+```{r other imports, message=FALSE}
+litters_data = read_csv(file = "./Data/FAS_litters.csv",
+    col_types = cols(
+    Group = col_character(),
+    `Litter Number` = col_character(),
+    `GD0 weight` = col_double(),
+    `GD18 weight` = col_double(),
+    `GD of Birth` = col_integer(),
+    `Pups born alive` = col_integer(),
+    `Pups dead @ birth` = col_integer(),
+    `Pups survive` = col_integer()
+    )
+)
+```
+
+## Same but XL
+
+```{r Excel, message = F}
+
+mlb_data <- read_excel("./Data/mlb11.xlsx")
 
 ```
 
-## Including Plots
 
-You can also embed plots, for example:
+## Read in SAS ...
 
-```{r pressure, echo=FALSE}
-plot(pressure)
+```{r SAS, message = F}
+
+pulse_data <- haven::read_sas("./Data/public_pulse_data.sas7bdat")
+
 ```
-
 
